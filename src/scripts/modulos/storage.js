@@ -12,9 +12,9 @@ export default class Storage{
 
             parsePelis = [
                 {
-                    "id": 1,
-                    "titulo":"<NAME>",
-                    "genero":"Accion"
+                    "id": 0,
+                    "titulo":"Adrian",
+                    "descripcion":"https://adriologia.github.io/PageCV.github.io/"
                 },
             ]
 

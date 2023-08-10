@@ -45,6 +45,13 @@ h1 {
   align-items: baseline;
 }
 
+.AsideBar{
+  display: flex;
+  flex-direction: column;
+  justify-content: baseline;
+  align-items: end;
+}
+
 
 
 
