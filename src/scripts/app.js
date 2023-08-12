@@ -20,7 +20,6 @@ export default class APP {
 
         this.Listado.addMovie()
 
-        this.Listado.deleteCard()
     }
     
 

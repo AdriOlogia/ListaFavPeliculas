@@ -1,4 +1,6 @@
 import Storage from "./storage.js"
+import DeleteCard from './delete.js'
+import EditCard from './edit.js'
 
 export default class Listado{
 
@@ -9,7 +11,6 @@ export default class Listado{
         this.descripcion_pelicula = document.querySelector( "#descripcionPelicula" )
         this.boton_agregar = document.querySelector( "#Agregar" )
         this.cuerpo_cartas = document.querySelector( "#bodyCards" )
-        this.botonBorrar = document.querySelectorAll( "#bodyCards #botonBorrar" )
     }
 
     addMovie(){
@@ -26,6 +27,7 @@ export default class Listado{
 
             if( titulo === "" || descripcion === "" ){
                 alert( "no se pudo guardar una carta" )
+                
             }else{
 
                 let pelicula_to_localstorage = {
@@ -48,13 +50,13 @@ export default class Listado{
 
     cardMovieTemplate( pelicula ){
         this.cuerpo_cartas.innerHTML += `
-                    <div id="pelicula-${pelicula.id}" class="col-3 m-1 cardPelicula">
-                        <div class="card" style="width: 18rem; height: 10em;">
+                    <div id="pelicula-${pelicula.id}" class="col-3 m-1 item-pelicula">
+                        <div class="card" style="width: 18rem; min-height: 10em;">
                             <div class="card-body">
-                            <h5 class="card-title">${pelicula.titulo}</h5>
-                            <p class="card-text">${pelicula.descripcion}</p>
-                            <button id="botonEditar" class="btn btn-primary">Editar</button>
-                            <button id="botonBorrar" class="btn btn-danger">Borrar</button>
+                                <h5 class="card-title">${pelicula.titulo}</h5>
+                                <p class="card-text">${pelicula.descripcion}</p>
+                                <button id="edit" class="btn btn-primary" data-id="${pelicula.id}">Editar</button>
+                                <button id="delete" class="btn btn-danger" data-id="${pelicula.id}">Borrar</button>
                             </div>
                         </div>
                     </div>
@@ -62,17 +64,17 @@ export default class Listado{
     }
 
     showList( listado_peliculas ){
-
+        
         this.cuerpo_cartas.innerHTML = "";
 
         for (const pelicula of listado_peliculas) {
-            this.cardMovieTemplate( pelicula )        
-            
+            this.cardMovieTemplate( pelicula )    
         }
-    }
 
-    deleteCard(){
-        console.log(this.botonBorrar)
+        DeleteCard()
+
+        EditCard()
+
     }
 
 
