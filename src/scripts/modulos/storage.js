@@ -13,8 +13,8 @@ export default class Storage{
             parsePelis = [
                 {
                     "id": 0,
-                    "titulo":"Adrian",
-                    "descripcion":"https://adriologia.github.io/PageCV.github.io/"
+                    "titulo":"¿Que puedes hacer?",
+                    "descripcion":"AGREGAR LA PELICULA QUE MAS TE GUSTE"
                 },
             ]
 

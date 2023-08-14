@@ -1,6 +1,7 @@
 import Storage from "./storage.js"
 import DeleteCard from './delete.js'
 import EditCard from './edit.js'
+import Search from './search.js'
 
 export default class Listado{
 
@@ -49,18 +50,34 @@ export default class Listado{
     }
 
     cardMovieTemplate( pelicula ){
-        this.cuerpo_cartas.innerHTML += `
-                    <div id="pelicula-${pelicula.id}" class="col-3 m-1 item-pelicula">
-                        <div class="card" style="width: 18rem; min-height: 10em;">
-                            <div class="card-body">
-                                <h5 class="card-title">${pelicula.titulo}</h5>
-                                <p class="card-text">${pelicula.descripcion}</p>
-                                <button id="edit" class="btn btn-primary" data-id="${pelicula.id}">Editar</button>
-                                <button id="delete" class="btn btn-danger" data-id="${pelicula.id}">Borrar</button>
-                            </div>
+        if( this.storage.getData().length > 1 ){
+            this.cuerpo_cartas.innerHTML += `
+                <div id="pelicula-${pelicula.id}" class="col-4 my-2 item-pelicula text-center">
+                    <div class="card" style="min-height: 10em">
+                        <div class="card-body">
+                            <h5 class="card-title">${pelicula.titulo}</h5>
+                            <p class="card-text">${pelicula.descripcion}</p>
+                            <button id="edit" class="btn btn-primary" data-id="${pelicula.id}">Editar</button>
+                            <button id="delete" class="btn btn-danger" data-id="${pelicula.id}">Borrar</button>
                         </div>
                     </div>
-                `
+                </div>
+            `
+        }else {
+            this.cuerpo_cartas.innerHTML += `
+                <div id="pelicula-${pelicula.id}" class="col-12 my-2 item-pelicula text-center">
+                    <div class="card" style="min-height: 10em">
+                        <div class="card-body">
+                            <h5 class="card-title">${pelicula.titulo}</h5>
+                            <p class="card-text">${pelicula.descripcion}</p>
+                            <button id="edit" class="btn btn-primary" data-id="${pelicula.id}">Editar</button>
+                            <button id="delete" class="btn btn-danger" data-id="${pelicula.id}">Borrar</button>
+                        </div>
+                    </div>
+                </div>
+            `
+            
+        }    
     }
 
     showList( listado_peliculas ){
@@ -75,7 +92,8 @@ export default class Listado{
 
         EditCard()
 
-    }
+        Search()
 
+    }
 
 } 
